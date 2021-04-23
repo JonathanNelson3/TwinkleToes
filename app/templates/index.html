@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/css/style.css?{% now " U" %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h1>Registration & Login</h1>
+
+        <div id="log_n_reg">
+
+            <div id="register">
+                <h2>Register</h2>
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <div class="form_data">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" id="first_name" class="form_input">
+                    </div>
+                    <div class="form_data">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" class="form_input">
+                    </div>
+                    <div class="form_data">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" class="form_input">
+                    </div>
+                    <div class="form_data">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" class="form_input">
+                    </div>
+                    <div class="form_data">
+                        <label for="confirm">Confirm Password:</label>
+                        <input type="password" name="confirm" id="confirm" class="form_input">
+                    </div>
+                    <input type="submit" class="submit" value="Register">
+                </form>
+            </div>
+            
+            <div id="login">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <div class="form_data">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" class="form_input">
+                    </div>
+                    <div class="form_data">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" class="form_input">
+                    </div>
+                    <input type="submit" class="submit" value="Login">
+                </form>
+            </div>
+            
+        </div>
+
+        <div class="index-mc">
+
+            <div class="contact">
+                <div class="contact-left">
+                    <div class="contact-left-content">
+                        <p>East Sunrise Highway<br>Freeport, Grand Bahama<br>426 Coral Rd<br>242-555-5555</p>
+                        <div class="contact-mediums">
+                            <a href="https://www.facebook.com/chivvaun.abigail"><img src="static/images/facebook.png" alt="facebook"></a>
+                            <a href="https://www.instagram.com/chivvaunabigail/"><img src="static/images/instagram.png" alt="instagram"></a>
+                            <a href="onPointeSupport@gmail.com"><img src="static/images/email.png" alt="email"></a>
+                        </div>
+                        <p>Free parking next to the studio</p>
+                    </div>
+                </div>
+
+                <div class="contact-middle">
+                    <img class="map" src="static/images/map2.png" alt="map">
+                    <img class="pin" src="static/images/ballerina-pin.png" alt="pin">
+                </div>
+            </div>
+        </div>
+        
+        {% if messages %}
+            <ul class="messages">
+                {% for error in messages %}
+                <li>**{{ error}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <script src="js/mdb.min.js"></script>
+        <script src="{% static '/static/js/dash.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>

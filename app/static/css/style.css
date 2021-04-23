@@ -1,0 +1,173 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+body {
+    /* background-color: lightblue; */
+    background-image: url('/static/images/welcome-bg.jpg');;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 800px;
+    min-height: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#register, #login {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#register {
+    margin-right: 75px;
+}
+
+.form_data label {
+    width: 150px;
+    display: inline-block;
+    margin-bottom: 10px;
+    color: black;
+}
+
+#log_n_reg label, #log_n_reg input {
+    margin-bottom: 10px;
+}
+
+.contact {
+    font-size: 12pt;
+    width: auto;
+    height: 250px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0px 50px 0px;
+    margin: 0px auto 0px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.contact-left, .contact-middle {
+    height: inherit;
+    width: auto;
+    display: inline-block;
+    margin: 0px auto;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.contact-left {
+    width: 250px;
+    overflow-wrap: normal;
+    display: flex;
+    align-items: center;
+}
+
+.contact-middle {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map {
+    height: inherit;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.pin {
+    height: 30pt;
+    width: auto;
+    position: absolute;
+    z-index: 2;
+/*👉    top: 150px;
+    left: 150px;👈*/
+    margin: auto auto;
+}
+
+.contact-mediums {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.contact-mediums img {
+    display: inline-block;
+    height: 65px;
+    width: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.header .nav-btns {
+    font-size: 10pt;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+button a {
+    text-decoration: none;
+    color: black;
+}
+
+#comments {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    margin-top: 15px;
+}
+
+.single-comment {
+    display: block;
+    box-sizing: border-box;
+    border: black 1px solid;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.single-comment p {
+    margin: 0px 0px 10px;
+}
+
+#add-comment {
+    display: inline-block;
+    float: right;
+    vertical-align: top;
+}
+
+#add-comment label, #add-comment input {
+    display: block;
+}
+
+#add-comment #comment-input {
+    vertical-align: top;
+    height: 75px;
+}
+
+#add-comment input, #add-comment textarea {
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}

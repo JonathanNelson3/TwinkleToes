@@ -1,0 +1,115 @@
+/*👉html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+body {
+    ➡ background-color: lightblue; ⬅
+    background-image: url('/static/images/welcome-bg.jpg');;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}👈*/
+
+body {
+    background: url('/static/images/young-ballerinas.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    z-index: 2000;
+}
+
+#experience-level {
+    font-size: 8pt;
+    animation: 'true';
+}
+
+#experience-level li {
+    width: 200px;
+}
+
+.card {
+    opacity: 0.9;
+}
+
+.lead span {
+    font-weight: 200;
+}
+
+.a-to-login {
+    text-decoration: none;
+    font-style: italic;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.header .nav-btns {
+    font-size: 10pt;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+button a {
+    text-decoration: none;
+    color: black;
+}
+
+#comments {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    margin-top: 15px;
+}
+
+.single-comment {
+    display: block;
+    box-sizing: border-box;
+    border: black 1px solid;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.single-comment p {
+    margin: 0px 0px 10px;
+}
+
+#add-comment {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: top;
+}
+
+#add-comment label, #add-comment textarea {
+    vertical-align: top;
+}
+
+#add-comment #comment-input {
+    vertical-align: top;
+    height: 75px;
+}
+
+#add-comment input, #add-comment textarea {
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-comment input {
+    display: block;
+}

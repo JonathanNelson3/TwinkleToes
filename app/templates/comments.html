@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/css/dashboard.css?{% now " U" %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+            <div class="container">
+                <a class="navbar-brand" href="#">onPointe Dance Studio</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/dashboard/{{ students.attendees.id }}">Dashboard
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/myaccount/{{ request.session.user_id }}">myAccount</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Page Content -->
+        <div class="container">
+            <div class="card border-0 shadow my-5">
+                <div class="card-body p-5">
+                    <h1 class="font-weight-light">Dashboard</h1>
+                    <p class="lead" style="margin: 10px; font-size: 12pt;">Visit your <span><a href="/dashboard/{{ user.id }}">dashboard</a></span> to see your scheduled classes, completed classes, and current <span><a href="#" title="Experience Levels:" data-toggle="popover" data-placement="right" data-trigger="hover" data-htmlcontent="#experience-level">experience level</a></span></p>
+                        <div id="experience-level" hidden>
+                            <ul>
+                                <li>Apprentice:         >10 completed classes</li>
+                                <li>Corpse de Ballet:   11 - 25 completed classes</li>
+                                <li>Demi-Soloist:       26 - 40 completed classes</li>
+                                <li>Soloist:            41 - 75 completed classes</li>
+                                <li>Principal Dancer:   75+ completed classes</li>
+                            </ul>
+                        </div>
+                    <ul>
+                        <li><p class="lead">See below for comments from other onPointe Dance Studio members</p></li>
+                            <!-- <div style="height: 350px; opacity: 0.5;"></div> -->
+                        <!-- <li><p class="lead" style="margin: 10px; font-size: 12pt;">Begin to update your <span><a href="/myaccount/{{ request.session.user_id }}">myAccount</a></span> page to make your account unique</p></li>
+                        <li><p class="lead" style="margin: 10px; font-size: 12pt;">Or head straight to the <span><a href="#">class schedule</a></span> to book a class today!</p></li> -->
+                    </ul>
+                    
+                    
+                <!-- <div class="wrapper">
+
+                    <div class="header">
+                        <h1>Welcome, {{ request.session.first_name }} {{ request.session.last_name }}</h1>
+                        <div class="nav-btns"> -->
+                            <!-- <a href="/myaccount/{{ request.session.user_id }}">Edit My Account</a> -->
+                            <!-- <button><a href="/logout">Logout</a></button> -->
+                            <!-- </div>
+                    </div> -->
+
+                    <div id="comments">
+                        <div id="add-comment">
+                            <form action="/create_comment" method="POST">
+                                {% csrf_token %}
+                                <label for="comment-content">Comment:</label>
+                                <textarea name="comment" id="comment-content" cols="30" rows="2"></textarea>
+                                <input type="submit" class="submit" value="Post">
+                            </form>
+                        </div>
+                        {% for comment in all_comments %}
+                        <div class="single-comment">
+                            <p>{{ comment.poster }}: "{{ comment.comment }}"</p>
+                            <p>Posted by: <a href="/user/{{ comment.poster.id }}">{{ comment.poster.first_name }} {{ comment.poster.last_name }}</a></p>
+                            <div class="likes-div">
+                                <p>{{ comment.user_likes.count }} people like this comment <button><a href="/like/{{ comment.id }}">Like</a></button></p>
+                            </div>
+                            {% if comment.poster.id == request.session.user_id %}
+                            <a href="/delete_comment/{{ comment.id }}">Delete</a>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>**{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <script>
+            $(document).ready(function(){
+                $('[data-toggle="popover"]').popover({
+                    html: true,
+                    content: function() {
+                        let contentID = $(this).data('htmlcontent');
+                        return $(contentID).html();
+                    }
+                });
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!-- </div> -->
+</body>
+</html>
